@@ -27,6 +27,16 @@ const app = props => {
     })
   }
 
+  const nameChangeHandler = (event) => {
+    setPersonsState({
+      persons: [
+        { name: 'Tracer', age: 26 }, 
+        { name: event.target.value, age: 25 }, 
+        { name: 'Mei', age: 41 } 
+      ]
+    })
+  }
+
   return (
     <div className="App">
       <h1>Hi, I'm a React App</h1>
@@ -35,16 +45,16 @@ const app = props => {
       <Person 
         name={personsState.persons[0].name} 
         age={personsState.persons[0].age}
-        click={switchNameHandler} />
+         />
       <Person 
         name={personsState.persons[1].name} 
         age={personsState.persons[1].age}
         click={switchNameHandler.bind(this, 'Bob')}
-        >My Hobbies: splodin' stuff</Person>
+        changed={nameChangeHandler.bind(this)}>My Hobbies: splodin' stuff</Person>
       <Person 
         name={personsState.persons[2].name} 
         age={personsState.persons[2].age}
-        click={switchNameHandler} />
+        />
     </div>
   );
   //The code above compiles down to the line below this. Neat!
